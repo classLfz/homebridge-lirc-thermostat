@@ -1,0 +1,51 @@
+{
+	"bridge": {
+		"name": "Homebridge",
+		"username": "CC:22:3D:E3:CE:30",
+		"port": 51826,
+		"pin": "031-45-154"
+	},
+	"description": "This is an example configuration for the Homebridge Lirc Thermostat plugin",
+	"accessories": [
+		{
+			"accessory": "HomebridgeLircThermostat",
+			"name": "room air conditioner",
+			"lirc": {
+				"commands": {
+					"lircd": "lircd",
+					"irrecord": "irrecord",
+					"irsend": "irsend",
+					"unbuffer": "unbuffer"
+				},
+				"lirc_driver": "default",
+				"lirc_conf": "/etc/lirc/lircd.conf",
+				"lirc_pid": "/var/run/lirc/lircd.pid",
+				"device": "/dev/lirc0",
+				"tmp_dir": "tmp/",
+				"remote": "MY_REMOTE"
+			},
+			"debounceTime": 1000,
+			"stateCommands": {
+				"OFF": "AIR OFF",
+				"HEAT": "AIR HEAT",
+				"COOL": "AIR COOL",
+				"AUTO": "AIR AUTO"
+			},
+			"heatTempsCommands": {
+				"template": "AIR_HEAT TEMP_{tempNum}",
+				"26": "AIR_HEAT TEMP_26",
+				"27": "AIR_HEAT TEMP_27"
+			},
+			"coolTempsCommands": {
+				"template": "AIR_COOL TEMP_{tempNum}",
+				"26": "AIR_COOL TEMP_26",
+				"27": "AIR_COOL TEMP_27"
+			},
+			"autoTempCommands": {
+				"template": "AIR_AUTO TEMP_{tempNum}",
+				"26": "AIR_AUTO TEMP_26",
+				"27": "AIR_AUTO TEMP_27"
+			}
+		}
+	]
+}
